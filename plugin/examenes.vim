@@ -1,4 +1,5 @@
 command! PlantillaExamen call PlantillaExamen()
+command! PlantillaEjercicios call PlantillaEjercicios()
 
 function! PlantillaExamen()
   " Guardamos la posición actual del cursor
@@ -90,5 +91,60 @@ function! PlantillaExamen()
 
   " Restaurar la posición del cursor
   call setpos('.', l:cursor_position)
+endfunction
+
+function! PlantillaEjercicios()
+    let l:template = [
+        \ '\documentclass[spanish, 11pt]{exam}',
+        \ '',
+        \ '% These tell TeX which packages to use.',
+        \ '\usepackage{array,epsfig}',
+        \ '\usepackage{amsmath, textcomp}',
+        \ '\usepackage{amsfonts}',
+        \ '\usepackage{amssymb}',
+        \ '\usepackage{amsxtra}',
+        \ '\usepackage{amsthm}',
+        \ '\usepackage{mathrsfs}',
+        \ '\usepackage{color}',
+        \ '\usepackage{multicol, xparse}',
+        \ '\usepackage{verbatim}',
+        \ '',
+        \ '\usepackage[utf8]{inputenc}',
+        \ '\usepackage[spanish]{babel}',
+        \ '\usepackage{eurosym}',
+        \ '',
+        \ '\usepackage{graphicx}',
+        \ '\graphicspath{{../img/}}',
+        \ '',
+        \ '\printanswers',
+        \ '\nopointsinmargin',
+        \ '\pointformat{}',
+        \ '',
+        \ '\let\multicolmulticols\multicols',
+        \ '\let\endmulticolmulticols\endmulticolmulticols',
+        \ '',
+        \ '\newcommand{\samedir}{\mathbin{\!/\mkern-5mu/\!}}',
+        \ '',
+        \ '\newcommand{\class}{4º ESO}',
+        \ '\newcommand{\examdate}{\today}',
+        \ '\newcommand{\tipo}{A}',
+        \ '\newcommand{\timelimit}{50 minutos}',
+        \ '',
+        \ '\pagestyle{head}',
+        \ '',
+        \ '\newcommand{\examnum}{Autoevaluación - Tema 1}',
+        \ '',
+        \ '\begin{document}',
+        \ '\begin{questions}',
+        \ '',
+        \ '\question',
+        \ '',
+        \ '',
+        \ '',
+        \ '\end{questions}',
+        \ '\end{dcocument}',
+    \ ]
+
+    call append(0, l:template)
 endfunction
 
