@@ -114,7 +114,7 @@ function! PlantillaEjercicios()
         \ '\usepackage{eurosym}',
         \ '',
         \ '\usepackage{graphicx}',
-        \ '\graphicspath{{../img/}}',
+        \ '\graphicspath{{./img/}}',
         \ '',
         \ '\printanswers',
         \ '\nopointsinmargin',
@@ -130,7 +130,10 @@ function! PlantillaEjercicios()
         \ '\newcommand{\tipo}{A}',
         \ '\newcommand{\timelimit}{50 minutos}',
         \ '',
-        \ '\pagestyle{head}',
+        \ '\pagestyle{head}'
+        \ '\firstpageheader{\includegraphics[width=0.2\columnwidth]{header_left}}{\textbf{Departamento de Matemáticas\linebreak \class}\linebreak \examnum}{\includegraphics[width=0.1\columnwidth]{header_right}}'
+        \ '\runningheader{\class}{\examnum}{Página \thepage\ of \numpages}'
+        \ '\runningheadrule'
         \ '',
         \ '\newcommand{\examnum}{Autoevaluación - Tema 1}',
         \ '',
@@ -142,7 +145,7 @@ function! PlantillaEjercicios()
         \ '',
         \ '',
         \ '\end{questions}',
-        \ '\end{dcocument}',
+        \ '\end{document}',
     \ ]
 
     call append(0, l:template)
